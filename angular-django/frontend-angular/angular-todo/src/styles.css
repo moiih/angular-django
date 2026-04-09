@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.main-container {
+    position: absolute;    
+    /* border: 4px blue solid;   */
+    /* padding: 20px; */
+    margin-top: 0px;
+    /* margin-left: 80px; */
+    top: 5%;
+    left: 0%;
+    padding-left: 550px;
+    /* transform: translate(-50%, -50%);     */
+}
+
+.text-green {
+    color: green;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-underline {
+    text-decoration: 2px black underline;
+}
+
+.text-magenta {
+    color: magenta;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-brown {
+    color: brown;
+}
+
+.text-padding {
+    padding: 15px;
+}

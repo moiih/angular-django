@@ -1,0 +1,66 @@
+.heading {
+    color: red;
+    text-decoration: 2px underline;
+}
+
+
+/*  Is there any Global Styling through "app.component.css" ?  */
+/*  ~~ Answer is a "Big" Yes. It can be achieved by adding the "../../app.component.css"  */
+/*     to the "styleUrls" element in '@Components({})'.    */
+
+h3 {
+    text-decoration: 2px underline;
+}
+
+.my-container {
+    position: relative;        
+    padding: 0px;
+    left: 5%;    
+}
+
+
+.mybtn {
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.mybtn-primary {
+    background-color: #0882ec;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mybtn-primary:active {
+    background-color: #a3aab1;
+}
+
+.mytext-green {
+    color: green;
+}
+
+textGreen {
+    color: green;
+}
+
+.nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#child-component-message {
+    padding-left: 10px;
+    color: blue;
+}
+
+#nav-tabs {
+    background-color: blue;
+    width: 100%;
+    padding: 18px;
+    
+}
+

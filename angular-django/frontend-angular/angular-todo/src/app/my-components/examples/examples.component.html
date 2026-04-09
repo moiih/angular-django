@@ -1,0 +1,224 @@
+<!-- <p>examples works!</p> -->
+<!-- <iframe width="400" height="300" src="https://www.youtube.com/embed/BGy8DdGw_WE?list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+
+<h1 class="head"> Examples Experiments: </h1>
+<div class="example-content">
+
+    // Interpolation: (Using some basic TS inside "Double-Curly" Braces)
+    <h2>
+        Hello {{ name }}
+    </h2>
+    <h2> {{ 2+2 }} </h2>
+    <h2> {{ "Hello " + name + " !!" }} </h2>
+    
+     <!-- #####  We can use the many in-built JavaScript String Function in "Interpolation" [ "{{ }}" ] (Curly Braces)  #####  -->
+    <h2> {{ "Name Length = " + name.length }}  </h2>    
+    
+    <!-- <h3> {{ name.toUpperCase }} </h3> -->
+    <h3> {{ name.toUpperCase() }} </h3>
+
+    **** We can use User-defined methods also in templates
+    <h3> {{ greetAngular() }} </h3>
+    <br>
+
+
+
+    // Inputs: Property Binding in Angular..... <br>
+    <input  id="Input-Id"  type="text"  value="Acer"> <br><br>
+    <input  disabled="false"  id="{{ myId }}"  type="text"  value="Acer"> <br><br>  <!-- // Here, even when we set "disabled" attribute to "false" then to is not working. -->
+    <input  [disabled]="isDisabled"  [id]="myId"  type="text"  value="Acer"> <br><br>    <!-- // By "Property Binding", we can active(*re-able) the "input" field by set this "isDisabled" class-property to "false" -->
+    <!-- // We can also "bind" the attributes/properties by adding the "bind-"I(bind hiphen) before the attributes/properties. -->
+    <!-- <input  bind-disabled="isDisabled"  [id]="myId"  type="text"  value="Acer"> <br><br>    // By "Property Binding", we can active(*re-able) the "input" field by set this "isDisabled" class-property to "false" -->
+
+    // Class-binding ....
+    <h2 [class.text-danger]="hasError">This is Angular.</h2>
+    <h2 [class.text-danger]="isSpecial">My name is Angular.</h2>
+    <h2 [ngClass]="messageStyleClasses"> I am Angular. </h2>
+    <br>
+
+
+
+    // Style-binding ....
+    <h2 [style.color]="isSpecial ? 'blue' : 'pink'">Angular's Style 1</h2>
+    <h2 [style.color]="highlightColor">Angular's Style 2</h2>
+    // Multiple STyles Binding
+    <h2 [ngStyle]="headStyles">Angular's Style 3</h2>
+
+    // Event Binding <br>
+    <button (click)="greeting = 'Welcome To Angular'">Greet</button>
+    {{ greeting }} <br>
+    <button (click)="onClick()">Greet</button>
+    {{ greeting }} <br>
+    <button (click)="onClick_2($event)">Greet</button>
+    {{ greeting }} <br><br>
+
+
+
+    // Template Reference Variables <br>
+    <!-- # We can make a 'Template Referrence Variable' by writing a 'Hash'(#) symbol followed by variable name like: #myInput  -->
+    <!-- # and then we can access the DOM elements using this variable as: myInput.value or myInput.style, etc. (!...cool...!)  -->
+    <input  #myInput  type="text"> <br>
+    <!--// We can also pass "myInput.value" directly to 'logMessage()' function so that we can directly catch(get) the input value in "component.ts" file  -->
+    <button  (click)="logMessage(myInput)">Log To Console</button><br>    
+    <h6 id=input-color>
+        {{ "myMessage = " }} {{ myMessage }} <br>
+        {{ "myInput.value = " + myInput.value }} <br>
+    </h6>
+    <br>
+
+
+
+    // (keyup) Event Example .... <br>
+    <input  #myInput2  (keyup)="onKey($event)"  type="text"> <br>
+    {{ "Your Inputs: " + myInputValue }} <br>
+    {{ myInput2.value }} <br><br>
+    
+
+    
+    // Two-Way Binding in Angular (Using "ngModel" Directive)<br>
+    <!-- // This "[{}]" represention is called "Banana inside a Box"  -->
+    <!-- // Where the "[]" denotes the 'Property Binding' which is the data-flow from 'Class to the Template' -->
+    <!-- // ..And the "{}" denotes the 'Event Binding' which is the data-flow from 'Template to the Class' -->
+
+    <!-- Two-Way Binding :- That is from the 'input' in template, the value flows to "Class's Property" (where, Property=Variable inside the class)  -->
+    <!--                      and then from the class' property to the Template.  -->
+
+    <input  [(ngModel)]="myName"  type="text"> <br>
+    {{ "You Typed: " + myName }} <br> <br>
+
+
+
+    // "ngIf" Directive .... <br>
+    <h2 *ngIf="displayBlock; then thenBlock; else elseBlock;">
+        Angular is Displayed.
+    </h2>
+
+    <ng-template #thenBlock>
+        <h3>
+            Then-Block: Angular is Hidden.
+        </h3>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <h3>
+            Else-Block: Angular is Hidden.
+        </h3>
+    </ng-template>
+    <br>
+
+
+
+    // "ngSwitch" Directive .... <br>
+    <div [ngSwitch]="myColor">
+        <div id="pickRed" *ngSwitchCase="'red'">You Picked 'Red' Color</div>
+        <div id="pickBlue" *ngSwitchCase="'blue'">You Picked 'Blue' Color</div>
+        <div id="pickGreen" *ngSwitchCase="'green'">You Picked 'Green' Color</div>
+        <div *ngSwitchDefault>No Color Picked.</div>
+    </div>
+    <br>
+
+
+    // Color-Picker #msoriginals .... <br>
+    <div id="colorPickerBlock">
+        <div  #redDiv  id="redBlock" [style.border]="myColor == 'red' ? '3px black solid' : '0px'"  style="background-color: red;"  (click)="changeColor(redDiv)"></div>
+        <div  #blueDiv  id="blueBlock" [style.border]="myColor == 'blue' ? '3px black solid' : '0px'"  style="background-color: blue;"  (click)="changeColor(blueDiv)"></div>
+        <div  #greenDiv  id="greenBlock" [style.border]="myColor == 'green' ? '3px black solid' : '0px'" style="background-color: green;"  (click)="changeColor(greenDiv)"></div>
+    </div>
+    <br>
+
+    <h5 id="selectedColor" [style.color]="myColor">
+        {{ "You picked " + myColor.toUpperCase() + " color."  }} <br>
+    </h5>
+    <br> <br>
+
+    
+
+    // For "ngFor" Directive ....
+    <div *ngFor="let fruit of myFruits; index as i; first as f; last as l; odd as od; even as ev;">
+        <h6>{{ i }} - {{ "f=" + f }} - {{ "l=" + l }} - {{ "od=" + od }} - {{ "ev=" + ev }} - {{ fruit.toUpperCase() }}</h6>
+    </div>
+    <br>
+
+
+    // Components Interaction ....  <br>
+    // [ Data going from (Parent to Child Component) ] <br>
+    // [ That is the data from "app-component" to "app-examples" ]
+    <div id="componentInteractionData">
+        <span>{{ 'Parent Title = ' + parentData }}</span> <br>
+        <span style="color: red;">{{ 'Parent Element = ' + parentElement }}</span>
+    </div>
+    <br> <br>
+
+    // [ Data going from (Child to Parent Component) ] <br>
+    // [ That is the data from "app-examples" to "app-component" ] <br> <br>
+    <button (click)="sendEvent()">
+        Click To Show Message Received From Child (to Parent) <br>
+        (Check Top of the Page after Click)
+    </button>
+
+    <br><br>
+
+    <h6>
+        // "Pipes" are used to manipulate any data before it displayed in the template.<br>
+        // "Pipes" act like filter for data to be manipulated in a specified format ... <br>
+        // or in some particular mannner or just replace the data with other data ... <br>
+        // or append something to the original data. <br> <br>
+        // The "Pipe" only changes the value of any class "property" <br>
+        // only for the View(Template). <br>
+        // Pipe does not original value of the class "property" remains unchanged. <br> <br>
+    </h6>
+    <h6> 
+        // Denoted by: Pipe Symbol ("|") <br>
+        // Pipes in Angular act just like "Template Filter" in 'Django'. <br> 
+    </h6>
+    // Many useful Pipes have been pre-defined .... <br>
+    // but Custom pipes can also be made as required. <br><br>
+    
+    <h5>// In-build "Pipes" in Angular.</h5>
+
+    <div id="in-built-pipes">
+        <h4> {{ "Angular Framework" | lowercase }} <span class="text-red">(LowerCase)</span> </h4> 
+        <h4> {{ "Angular Framework" | uppercase }} <span class="text-red">(UpperCase)</span> </h4>
+        <h4> {{ "angular framework" | titlecase }} <span class="text-red">(TitleCase)</span> </h4> <br>
+
+        <h4> {{ "Angular Framework" | slice:3:8 }} <span class="text-red">(Slice)</span> </h4> <br>
+        
+        <h4> {{ headStyles }} <span class="text-red">(without Json Pipe)</span> </h4>
+        <h4> {{ headStyles | json }} <span class="text-red">(with Json Pipe)</span> </h4> <br>        
+        
+        <h4> {{ 5.678 | number:'1.2-3' }} <span class="text-red">( ["5.678 | number:'1.2-3'"] - 'number' Pipe )</span> </h4>
+        <h4> {{ 5.678 | number:'3.4-5' }} <span class="text-red">( ["5.678 | number:'3.4-5'"] - 'number' Pipe )</span> </h4>
+        <h4> {{ 5.678 | number:'3.1-2' }} <span class="text-red">( ["5.678 | number:'3.1-2'"] - 'number' Pipe )</span> </h4> <br>
+
+        <h4> {{ 0.25 | percent }} <span class="text-red">( percent )</span> </h4>
+        <h4> {{ 0.25 | currency }} <span class="text-red">( currency )</span> </h4>
+        <h4> {{ 0.25 | currency:'GBP' }} <span class="text-red">( 0.25 | currency:'GBP' )</span> </h4>
+        <h4> {{ 0.25 | currency:'INR' }} <span class="text-red">( 0.25 | currency:'INR' )</span> </h4>
+        <h4> {{ 0.25 | currency:'Rupees' }} <span class="text-red">( 0.25 | currency:'Rupees' )</span> </h4>
+        <h4> {{ 0.25 | currency:'Rupees':'code' }} <span class="text-red">( 0.25 | currency:'Rupees':'code' )</span> </h4> <br>
+
+        <h4> {{ date }} </h4>
+            <h4> <span class="text-red">( date )</span> </h4>
+        <h4> {{ date | date:'short' }} <span class="text-red">( date | date:'short' )</span> </h4> 
+        <h4> {{ date | date:'shortDate' }} <span class="text-red">( shortDate )</span> </h4>
+        <h4> {{ date | date:'shortTime' }} <span class="text-red">( shortTime )</span> </h4>
+        <h4> {{ date | date:'longDate' }} <span class="text-red">( longDate )</span> </h4>
+        <h4> {{ date | date:'longTime' }} <span class="text-red">( longTime )</span> </h4>        
+    </div>
+
+
+    <!-- <br>
+    <h5> // Data Fetched From DRF(Django) API </h5>
+    <h4 class="text-red text-italic"> List of tasks:- </h4>
+    <h3 *ngFor="let myTask of taskDataAPI">
+        <li> {{ myTask.title }} </li>
+    </h3> -->
+
+
+</div>
+
+
+
+
+<div id="footer-div" class="pseudo-footer"></div>

@@ -1,0 +1,18 @@
+
+<div class="my-container">
+    
+    <h3> {{ task_Title }} </h3>
+
+    <div>
+        <ul>
+            <ng-container *ngFor="let task of task_List; let i=index;">
+                
+                <li class="tasks-list"  *ngIf="i <= 3">
+                    <span> {{ task }} </span>
+                </li>
+                
+            </ng-container>
+        </ul>
+    </div>
+
+</div>

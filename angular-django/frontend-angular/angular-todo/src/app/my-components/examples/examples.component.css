@@ -1,0 +1,114 @@
+.pseudo-footer {
+    margin-top: 200px;
+}
+
+.head {
+    text-decoration: 3px underline;
+    color: red;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.example-content {
+    padding-left: 40px;
+}
+
+#Input-Id {
+    border: 2px orangered solid;
+}
+
+#Input-Id:disabled {
+    background-color: #b1b0b0;
+}
+
+.text-success {
+    color: green;
+}
+
+.text-danger {
+    color: red;
+}
+
+.text-special {
+    font-style: italic;
+    text-decoration: 3px magenta underline;
+}
+
+.text-red {
+    color: red;
+    font-size: 15px;
+}
+
+#input-color {
+    color: red;
+}
+
+#pickRed {
+    color: red;
+    font-size: 20px;
+    text-decoration: 3px orange underline;
+    font-weight: 700;
+}
+
+#pickBlue {
+    color: blue;
+    font-size: 20px;
+    text-decoration: 3px orange underline;
+    font-weight: 700;
+}
+
+#pickGreen {
+    color: Green;
+    font-size: 20px;
+    text-decoration: 3px orange underline;
+    font-weight: 700;
+}
+
+#colorPickerBlock {
+    padding-top: 10px;
+    margin-bottom: 60px;
+}
+
+#redBlock {
+    float: left;
+    width: 20%;
+    height: 60px;
+    border: 3px red solid;
+    /*background-color: red;*/
+    margin: 10px 20px 0px 0px;
+}
+
+#blueBlock {
+    float: left;
+    width: 20%;
+    height: 60px;
+    border: 3px blue solid;
+    /*background-color: blue;*/
+    margin: 10px 20px 0px 0px;
+}
+
+#greenBlock {
+    float: left;
+    width: 20%;
+    height: 60px;
+    border: 3px green solid;
+    /*background-color: green;*/
+    margin: 10px 20px 0px 0px;
+}
+
+#selectedColor {
+    margin-top: 10px;
+    text-decoration: 3px orange underline;
+    font-weight: 700;
+} 
+
+#componentInteractionData {
+    color: Blue;
+    font-weight: 600;
+    font-family: cursive;
+    font-size: 20px;
+}
+
+#in-built-pipes {
+    color: magenta;
+}

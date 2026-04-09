@@ -1,0 +1,147 @@
+
+<!-- <div class="main-container">
+  <router-outlet></router-outlet>  
+</div> -->
+
+
+<br>  
+
+<div id="nav-tabs">
+<!-- <mat-tab-group> -->
+    &nbsp;&nbsp;
+    <!-- // Buttons with Angular Material and Bootstrap combined  -->
+    <button mat-raised-button class="btn btn-warning" [class.mytext-green]="focusExamples" (click)="gotoExamples()" routerLink="/">
+        Angular Examples
+        <!-- <mat-tab label="First"> Angular Examples </mat-tab> -->
+    </button> &nbsp;&nbsp;
+
+    <button mat-raised-button class="btn btn-warning" [class.mytext-green]="focusStudentAPI" (click)="gotoStudentAPI()" routerLink="/students">
+        Using API In Angular
+        <!-- <mat-tab label="Second"> API in Angular </mat-tab> -->
+    </button> &nbsp;&nbsp;
+
+    <button mat-raised-button class="btn btn-warning" [class.mytext-green]="focusStudentAPI" (click)="gotoStudentAPI()" routerLink="/angular_forms">
+      Angular Forms
+  </button> &nbsp;&nbsp;
+
+</div>
+
+  <!-- <mat-tab label="Third" routerLink="/students" routerLinkActive="mat-caption"> Content 3 </mat-tab> -->
+<!-- </mat-tab-group> -->
+
+<div class="main-container mb-lg-2 pb-5" style="margin-top: 90px;">
+    <router-outlet></router-outlet>  
+</div>
+
+
+
+<!-- <div class="main-container mb-lg-2 pb-5" style="position: relative; margin-bottom: 50px;"> -->
+
+  <!-- <div>
+    <button mat-raised-button color="accent">Hello</button>
+  </div> <br> -->
+
+    <!-- We can also use this [ *ngIf="_router.url != '/students'" ] [url not equals to(!=) 'students' ] in below line -->
+    <!-- <button class="mybtn mybtn-primary"  *ngIf="_router.url == '/'" routerLink="/students" routerLinkActive="text-italic text-bold">
+        Go To Student Through Routing &rArr;
+    </button>        
+
+    <button class="mybtn mybtn-primary"  *ngIf="_router.url == '/students'" routerLink="/" routerLinkActive="text-italic text-bold">
+        &lArr; Back To (Home): Basic Examples 
+    </button>     -->
+    
+
+    <!-- Routing Goes Here... -->
+    <!-- <router-outlet></router-outlet>   -->
+<!-- </div> -->
+
+<br><br><br>
+
+
+<!-- <div class="main-container" *ngIf="_router.url != '/students'">  -->
+<div [@fadeIn] class="main-container mat-title" *ngIf="_router.url != '/students' && _router.url == '/'" style="margin-top: 70px; display: block;">
+
+  <h1 class="heading">Angular Project</h1>
+
+  <h2>Project Title: {{ title }} </h2>
+
+  
+
+  <h5>
+    <h3 class="text-underline text-magenta"> Received Tasks Through API: </h3>
+
+    <!-- // Data Received from API via 'service.ts'  -->
+    <!-- {{ apiAllTasks }} -->
+    <ul class="text-green" *ngFor='let task of apiAllTasks'>      
+        <!-- <li [@fadeIn] class="text-italic">  -->
+        <li  class="text-italic"> 
+            {{ task.title }}
+        </li>      
+    </ul>
+
+    <button (click)="postNewTask()"> Post New Task </button> <br>
+
+    <br>
+    <div *ngIf='allowPOST'>
+      <button (click)="deleteTask()"> Delete Most Recent Task </button>
+    </div>
+
+    <div *ngIf="deleteError"> 
+      <h5 class="alert alert-warning alert-dismissible fade show">
+         "{{ deleteError }}" 
+      </h5>
+    </div>
+
+    <br>
+    <h3 class="text-underline text-magenta"> Individual Task Detail Through API: </h3>
+    <!-- // Giving Error in Console -->
+    <h4 class="text-green"> 
+      <!-- {{ taskDetail }} -->
+        &nbsp;&nbsp;&nbsp;&bull; {{ taskDetail.id }} => {{ taskDetail.title }} => {{ taskDetail.completed }} 
+    </h4>
+
+  </h5>  
+
+  <div class="nav nav-pills">
+
+    <!-- When 'HTML-DOM' "attributes" are combined with some logic of TS in '[]' block then ... -->
+    <!-- this is known as "Property Binding" in Angular.  -->
+
+    <li [class.active]="showElement == 'list'">
+      <a class="mybtn" [class.mybtn-primary]="showElement == 'list'" (click)="showElement = 'list'">Todo List View</a>
+    </li> &nbsp;&nbsp;
+
+    <li [class.active]="showElement == 'tasks'">
+      <a class="mybtn" [class.mybtn-primary]="showElement == 'tasks'" (click)="showElement = 'tasks'">Tasks View</a> 
+    </li>    
+
+  </div>
+  
+
+  <div [ngSwitch]="showElement">
+    <app-mylist *ngSwitchCase="'list'"></app-mylist>
+    <app-tasks *ngSwitchCase="'tasks'"></app-tasks>
+    <span *ngSwitchDefault>Nothing To Display !!</span>
+  </div>
+  <br>
+
+
+  // Components Interaction <br>
+  // Message Received From Child To "Parent to Child Component"  <br>
+  // That is from ("app-examples" to "app-component")
+  <div>
+    <h3>Message Recieved From Child:</h3>
+    <h5 id="child-component-message"> "{{ childMessage }}" </h5>
+  </div>
+  
+  <!-- <app-students></app-students> -->
+  <!-- <router-outlet></router-outlet> -->
+
+  <!--  #########  Basic Examples  #########  -->
+
+  <!-- // Here, we are sending the data from the 'Parent Component'("<app-component>") to the 'Child Component'("<app-example>")   -->
+  <!-- // We can send data from Child to Parent using "$event" (EventEmitter) (like we did blow: (click="childMessage=$event")) .... -->
+  <!-- // where "childMessage" is user-defined variable that we have defined in the "app.component.ts" file to store data recived from Child  -->
+  <app-examples  (childEvent_MessageForParent)="childMessage=$event"  [parentData]="title"  [parentData2]="showElement"></app-examples>
+
+</div>

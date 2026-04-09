@@ -1,0 +1,17 @@
+
+<!-- <p>Student Component Works!</p> -->
+
+<br>
+
+<div [@fadeIn] style="display: block;">
+    <h2 class="text-red text-underline text-bold text-padding"> Angular Routing </h2>
+
+    <h4 class="text-brown text-underline text-bold text-padding"> Students' Data Fetched From Server (students.json):- </h4>
+
+    <div class="text-green text-bold text-italic">
+        <ul *ngFor="let student of allStudents">
+            <li> {{ student.id }} --> {{ student.name }} --> {{ student.city }} </li>        
+        </ul>        
+    </div>
+</div>
+
